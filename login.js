@@ -13,7 +13,7 @@ loginBtn.addEventListener("click", (e) => {
     return;
   }
 
-  if (password.value.length <= 6) {
+  if (password.value.length < 6) {
     alert("Password must be at least 6 characters long.");
     return;
   }
