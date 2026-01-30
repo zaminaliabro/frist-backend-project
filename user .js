@@ -28,16 +28,20 @@ logoutBtn.addEventListener("click", () => {
   window.location.href = "login.html";
 });
 
+let loggedOut = false;
+
 function autoLogout() {
+  if (loggedOut) return;
+
   const tokenObj = getToken();
 
   if (!tokenObj || !isTokenValid(tokenObj)) {
+    loggedOut = true;
     removeToken();
     localStorage.removeItem("currentUser");
-    alert("token expired! Please login again.");
+    alert("Session expired. You have been logged out.");
     window.location.href = "login.html";
   }
 }
 
-autoLogout();
 setInterval(autoLogout, 2000);
